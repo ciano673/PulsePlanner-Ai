@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PlanMate AI - Your Smart Daily Scheduler</title>
+    <style>
+      /* ===== Global Styles ===== */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f9f9f9;
+        color: #333;
+      }
+
+      header {
+        background: #2d89ef;
+        padding: 20px;
+        text-align: center;
+        color: white;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      main {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      section {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      h2 {
+        margin-top: 0;
+      }
+
+      /* ===== Setup Modal ===== */
+      #setupModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      #setupModal .modal-content {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 90%;
+      }
+
+      #setupModal textarea {
+        width: 100%;
+        height: 60px;
+        margin: 10px 0;
+      }
+
+      #setupModal button {
+        background: #2d89ef;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      /* ===== Quick Task Entry ===== */
+      .task-entry {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .task-entry input[type="text"],
+      .task-entry textarea {
+        padding: 10px;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .task-entry button {
+        align-self: flex-start;
+        background: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      /* ===== Scheduler / Calendar View ===== */
+      .scheduler {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .calendar-view {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+      }
+
+      .calendar-day {
+        background: #eaeaea;
+        padding: 10px;
+        border-radius: 4px;
+        min-height: 80px;
+      }
+
+      /* ===== Priority List ===== */
+      .priority-list ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .priority-list li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .priority-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* ===== AI Feedback Section ===== */
+      .ai-feedback {
+        background: #f0f8ff;
+        padding: 15px;
+        border-left: 4px solid #2d89ef;
+        border-radius: 4px;
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        text-align: center;
+        padding: 10px;
+        background: #2d89ef;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Setup Modal -->
+    <div id="setupModal">
+      <div class="modal-content">
+        <h2>Welcome to PlanMate AI</h2>
+        <p>Tell us about your preferences.</p>
+        <label for="likes">What do you like?</label>
+        <textarea id="likes" placeholder="E.g., nature, technology, sports"></textarea>
+        <label for="dislikes">What do you dislike?</label>
+        <textarea id="dislikes" placeholder="E.g., crowded places, long meetings"></textarea>
+        <button id="setupSubmit">Start Planning</button>
+      </div>
+    </div>
+
+    <header>
+      <h1>PlanMate AI</h1>
+    </header>
+
+    <main>
+      <!-- Quick Task Entry Section -->
+      <section id="quickTaskEntry">
+        <h2>Quick Task Entry</h2>
+        <p>
+          Describe your plan for the day—whether it's an itinerary, a question about public transportation,
+          or just a list of things you want to do.
+        </p>
+        <div class="task-entry">
+          <input type="text" id="taskInput" placeholder="E.g., 'Today I want to go to the beach with my friends at Location1...'" />
+          <button id="addTaskButton">Add Task</button>
+        </div>
+      </section>
+
+      <!-- Scheduler / Visual Day Planner Section -->
+      <section id="schedulerSection">
+        <h2>Smart Scheduler</h2>
+        <p>Here's how your tasks are arranged over the days.</p>
+        <div class="calendar-view" id="calendarView">
+          <!-- Dynamically generated days (for a simplified month view) -->
+          <!-- Each day can be clicked to show more info if needed -->
+        </div>
+      </section>
+
+      <!-- Priority List Section -->
+      <section id="prioritySection" class="priority-list">
+        <h2>Priority Tasks</h2>
+        <ul id="priorityList">
+          <!-- Dynamically generated priority list items -->
+        </ul>
+      </section>
+
+      <!-- AI Feedback / Suggestions Section -->
+      <section id="aiFeedbackSection" class="ai-feedback">
+        <h2>AI Suggestions</h2>
+        <p id="aiFeedback">
+          <!-- AI feedback will be injected here. Eg: "Based on your tasks, would you like to add a reminder for lunch?" -->
+          Your AI assistant will provide suggestions based on your schedule.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 PlanMate AI. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // ===== Initialization =====
+      const setupModal = document.getElementById("setupModal");
+      const setupSubmit = document.getElementById("setupSubmit");
+      const likesInput = document.getElementById("likes");
+      const dislikesInput = document.getElementById("dislikes");
+
+      // Store user preferences - this can later be sent to your backend
+      setupSubmit.addEventListener("click", () => {
+        const likes = likesInput.value.trim();
+        const dislikes = dislikesInput.value.trim();
+        // (For now we'll just log it to the console)
+        console.log("User Likes:", likes);
+        console.log("User Dislikes:", dislikes);
+        setupModal.style.display = "none";
+        // You can also personalize AI feedback based on preferences here.
+        document.getElementById("aiFeedback").innerText =
+          "Great! Based on your preferences, we'll suggest local events and tasks that match your interests.";
+      });
+
+      // ===== Task Management =====
+      let tasks = [];
+      const addTaskButton = document.getElementById("addTaskButton");
+      const taskInput = document.getElementById("taskInput");
+      const calendarView = document.getElementById("calendarView");
+      const priorityList = document.getElementById("priorityList");
+
+      // Dummy function to assign a day (for demo purposes, using current day mod)
+      function getAssignedDay() {
+        const today = new Date();
+        // A simple random day offset 0-29 for month view demo
+        return (today.getDate() + Math.floor(Math.random() * 5)) % 30 || 1;
+      }
+
+      // Function to add task and update calendar/priority list
+      addTaskButton.addEventListener("click", () => {
+        const taskText = taskInput.value.trim();
+        if (taskText === "") return;
+
+        // Create a task object with dummy properties
+        const newTask = {
+          id: Date.now(),
+          text: taskText,
+          day: getAssignedDay(),
+          // For demonstration: simple categorization based on keywords:
+          priority:
+            taskText.toLowerCase().includes("work") ||
+            taskText.toLowerCase().includes("meeting")
+              ? "High"
+              : taskText.toLowerCase().includes("gym")
+              ? "Medium"
+              : "Low"
+        };
+
+        tasks.push(newTask);
+        taskInput.value = "";
+        updateCalendar();
+        updatePriorityList();
+        // Simulate AI feedback based on the task
+        generateAIFeedback(newTask);
+      });
+
+      // ===== Calendar Update =====
+      function updateCalendar() {
+        calendarView.innerHTML = "";
+        // For a demo, create 30 days
+        for (let day = 1; day <= 30; day++) {
+          const dayDiv = document.createElement("div");
+          dayDiv.className = "calendar-day";
+          dayDiv.innerHTML = `<strong>Day ${day}</strong><br/>`;
+
+          // Filter tasks for this day
+          const dayTasks = tasks.filter((task) => task.day === day);
+          dayTasks.forEach((task) => {
+            const taskEl = document.createElement("div");
+            taskEl.innerText = task.text;
+            taskEl.style.fontSize = "0.85rem";
+            dayDiv.appendChild(taskEl);
+          });
+
+          calendarView.appendChild(dayDiv);
+        }
+      }
+
+      // ===== Priority List Update =====
+      function updatePriorityList() {
+        // Clear current priority list
+        priorityList.innerHTML = "";
+        // Group tasks into categories
+        const groups = { High: [], Medium: [], Low: [] };
+
+        tasks.forEach((task) => {
+          groups[task.priority].push(task);
+        });
+
+        for (let priority in groups) {
+          if (groups[priority].length > 0) {
+            const heading = document.createElement("li");
+            heading.innerHTML = `<strong>${priority} Priority:</strong>`;
+            priorityList.appendChild(heading);
+            groups[priority].forEach((task) => {
+              const taskItem = document.createElement("li");
+              taskItem.innerText = task.text + " (Day " + task.day + ")";
+              priorityList.appendChild(taskItem);
+            });
+          }
+        }
+      }
+
+      // ===== AI Feedback Generation =====
+      function generateAIFeedback(task) {
+        // Basic keyword-based suggestion (this should eventually use complex NLP)
+        let suggestion = "";
+        if (task.text.toLowerCase().includes("beach")) {
+          suggestion =
+            "It sounds like a beach day! Would you like to check transportation options for a quick trip?";
+        } else if (task.text.toLowerCase().includes("gym")) {
+          suggestion =
+            "Great! Consider scheduling a warm-up session before your workout.";
+        } else if (task.text.toLowerCase().includes("work")) {
+          suggestion =
+            "Remember to schedule breaks when you have consecutive meetings.";
+        } else {
+          suggestion = "Keep up the momentum! Check your calendar for possible overlaps.";
+        }
+        document.getElementById("aiFeedback").innerText = suggestion;
+      }
+    </script>
+  </body>
+</html>
