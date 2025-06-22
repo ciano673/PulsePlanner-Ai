@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     setupModal.style.display = "flex";
   }
-
+setupSubmit.addEventListener("click", function () {
+  // ... code that hides the modal and stores preferences
+});
   setupSubmit.addEventListener("click", function () {
     const likes = likesInput.value.trim();
     const dislikes = dislikesInput.value.trim();
@@ -151,4 +153,5 @@ window.addEventListener("load", function () {
     const loader = document.getElementById("loader");
     if (loader) loader.style.display = "none";
   }, 2500); // delay matches the fadeOut animation
+setupModal.style.display = "none";
 });
