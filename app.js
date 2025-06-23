@@ -29,6 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
       loader.style.display = "none";
     }, 2500);
   }
+  const quickTaskInput = document.getElementById("quickTaskInput");
+const addQuickTaskButton = document.getElementById("addQuickTaskButton");
+const quickTaskResult = document.getElementById("quickTaskResult");
+
+if (addQuickTaskButton) {
+  addQuickTaskButton.addEventListener("click", function () {
+    const query = quickTaskInput.value.trim();
+    if (query) {
+      quickTaskResult.innerHTML = `<p>Planning route for: ${query}</p>`;
+    }
+  });
+}
 
   // Further global functions (e.g., AI personality updates) can be added here.
 });
