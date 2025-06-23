@@ -124,5 +124,22 @@ footer {
   nav ul {
     flex-direction: column;
     gap: 10px;
+    
+    /* Default is dark mode. For light mode, we override colors when .light-mode is applied to body */
+body.light-mode {
+  background: #fff;
+  color: #000;
+}
+body.light-mode header {
+  background: linear-gradient(45deg, #00BFFF, #8A2BE2);
+}
+body.light-mode nav ul li a {
+  color: #000;
+}
+body.light-mode nav ul li a:hover,
+body.light-mode nav ul li a.active {
+  color: #8A2BE2;
+}
+/* You can expand these overrides for other elements as needed */
   }
 }
