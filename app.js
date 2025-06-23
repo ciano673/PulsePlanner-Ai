@@ -16,9 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
       aiWelcome.innerHTML = "<p>Hey there! Ready to elevate your planning experience?</p>";
     }
     localStorage.setItem("visited", true);
+    document.addEventListener("DOMContentLoaded", function () {
+  // Existing code...
+
+  // Dark/Light Mode Toggle
+  const themeButton = document.getElementById("toggleThemeButton");
+  if (themeButton) {
+    themeButton.addEventListener("click", function () {
+      document.body.classList.toggle("light-mode");
+      // Optionally, store the preference in localStorage for persistence
+      const isLight = document.body.classList.contains("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+
+    // On page load, check localStorage for theme preference
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light-mode");
+    }
   }
 });
-  });
 
   // Global: Example for saving preferences from any page using localStorage.
   const preferencesForm = document.getElementById("preferencesForm");
