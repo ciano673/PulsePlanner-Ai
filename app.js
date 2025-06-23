@@ -79,6 +79,38 @@ if (addQuickTaskButton) {
     const query = quickTaskInput.value.trim();
     if (query) {
       quickTaskResult.innerHTML = `<p>Planning route for: ${query}</p>`;
+      // Quick Planner Logic in app.js
+document.addEventListener("DOMContentLoaded", function () {
+  const quickTaskInput = document.getElementById("quickTaskInput");
+  const addQuickTaskButton = document.getElementById("addQuickTaskButton");
+  const quickTaskResult = document.getElementById("quickTaskResult");
+
+  if (addQuickTaskButton) {
+    addQuickTaskButton.addEventListener("click", function () {
+      const query = quickTaskInput.value.trim();
+      if (query) {
+        // Simple simulated map integration:
+        // Expecting a format like: "Plan route from Home to Office"
+        if (query.toLowerCase().includes("from") && query.toLowerCase().includes("to")) {
+          let parts = query.split(/from|to/i);
+          let startLocation = parts[1] ? parts[1].trim() : "unknown";
+          let endLocation = parts[2] ? parts[2].trim() : "unknown";
+          // Simulated function to get transit time (placeholder for API call)
+          let transitTime = getTransitTime(startLocation, endLocation);
+          quickTaskResult.innerHTML = `<p>Route from ${startLocation} to ${endLocation}: Estimated transit time is ${transitTime}.</p>`;
+        } else {
+          quickTaskResult.innerHTML = `<p>Please format your query as "Plan route from [Start] to [Destination]".</p>`;
+        }
+        quickTaskInput.value = "";
+      }
+    });
+  }
+
+  // Simulated maps integration function (to be replaced with actual API integration later)
+  function getTransitTime(start, end) {
+    // For demonstration purposes, return a random time between 10-30 minutes.
+    const time = Math.floor(Math.random() * 21) + 10;
+    return `${time} minutes`;
     }
   });
 }
