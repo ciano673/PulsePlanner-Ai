@@ -1,93 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PlanMate AI</title>
-  <!-- Google Font for a fresh, modern look -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulsePlanner Ai - Home</title>
+  <!-- Use Montserrat for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Setup Modal for User Preferences -->
-  <div id="setupModal" class="modal">
-    <div class="modal-content">
-      <h2>Welcome to PlanMate AI</h2>
-      <p>Tell us about your preferences:</p>
-      <label for="likes">What do you like?</label>
-      <textarea id="likes" placeholder="Nature, tech, sports, etc."></textarea>
-      <label for="dislikes">What do you dislike?</label>
-      <textarea id="dislikes" placeholder="Crowds, long meetings, etc."></textarea>
-      <button id="setupSubmit">Start Planning</button>
-    </div>
-  </div>
-
-  <!-- Header with Brand and Hamburger Menu -->
+  <!-- Header with navigation -->
   <header>
     <div class="header-container">
-      <h1>PlanMate AI</h1>
-      <div id="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav id="nav-menu" class="nav-menu">
+      <h1>PulsePlanner Ai</h1>
+      <nav>
         <ul>
-          <li><a href="#quick-planner">Quick Planner</a></li>
-          <li><a href="#smart-scheduler">Smart Scheduler</a></li>
-          <li><a href="#ai-chat">AI Chat</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a href="settings.html">Settings</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- Main content -->
   <main>
-    <!-- Quick Task Planner Section -->
-    <section id="quick-planner" class="section">
-      <h2>Quick Task Planner</h2>
-      <p>Plan your daily outings and get optimal routes with public transport info.</p>
-      <div class="task-entry">
-        <input type="text" id="quickTaskInput" placeholder="E.g., 'I want to go to the beach using public transport'" />
-        <button id="addQuickTaskButton">Plan Route</button>
-      </div>
-      <div id="quickTaskResult" class="result"></div>
-    </section>
-
-    <!-- Smart Scheduler Section -->
-    <section id="smart-scheduler" class="section">
-      <h2>Smart Scheduler</h2>
-      <p>Organize your tasks for the week/month. Add your tasks and see them automatically sorted.</p>
-      <div class="task-entry">
-        <input type="text" id="schedulerTaskInput" placeholder="Enter a task for your schedule" />
-        <button id="addSchedulerTaskButton">Add to Schedule</button>
-      </div>
-      <div id="calendarView" class="calendar-view">
-        <!-- Calendar days will be dynamically generated -->
-      </div>
-      <div id="priorityList" class="priority-list">
-        <h3>Priority Tasks</h3>
-        <ul></ul>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome to PulsePlanner Ai</h2>
+        <p>Your ultimate AI companion for smarter scheduling, task tracking, and productivity.</p>
+        <a href="tools.html" class="cta-button">Start Planning</a>
       </div>
     </section>
 
-    <!-- AI Chat / Suggestions Section -->
-    <section id="ai-chat" class="section">
-      <h2>AI Chat</h2>
-      <p>Your friendly AI assistant is here to help with suggestions and ideas!</p>
-      <div id="aiFeedback" class="ai-feedback">
-        <p>Hello! I'm here to help you plan an awesome day. What can I assist you with?</p>
+    <!-- Features Section -->
+    <section class="features">
+      <h2>What We Offer</h2>
+      <div class="feature-list">
+        <div class="feature-item">
+          <h3>Quick Task Planner</h3>
+          <p>Plan your daily tasks effortlessly with our intuitive AI assistant.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Smart Scheduler</h3>
+          <p>Automatically organize your work week and recurring tasks.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Progress Tracker</h3>
+          <p>Visualize your productivity with goal tracking and progress charts.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Google Calendar Sync</h3>
+          <p>Keep your plans in sync across all your devices with seamless calendar integration.</p>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 PlanMate AI. All rights reserved.</p>
+    <p>© 2025 PulsePlanner Ai. All rights reserved.</p>
   </footer>
 
+  <!-- Link to your site's JavaScript -->
   <script src="app.js"></script>
 </body>
-<div id="loader" class="loading-screen">
-  <p>PlanMate AI is getting ready to spark your day…</p>
-</div>
 </html>
