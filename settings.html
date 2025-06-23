@@ -53,6 +53,39 @@
       <button id="calendarSyncButton">Sync with Google Calendar</button>
       <div id="calendarSyncStatus"></div>
     </section>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+  // Existing code ...
+
+  // Dark/Light Mode Toggle
+  const themeButton = document.getElementById("toggleThemeButton");
+  if (themeButton) {
+    themeButton.addEventListener("click", function () {
+      document.body.classList.toggle("light-mode");
+      const isLight = document.body.classList.contains("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+      console.log("Theme toggled. Current theme:", isLight ? "light" : "dark");
+    });
+    // Apply theme based on stored preference
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light-mode");
+    }
+  }
+
+  // User Preferences Form (if present on the page)
+  const preferencesForm = document.getElementById("preferencesForm");
+  if (preferencesForm) {
+    preferencesForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const likes = document.getElementById("likes").value.trim();
+      const dislikes = document.getElementById("dislikes").value.trim();
+      localStorage.setItem("likes", likes);
+      localStorage.setItem("dislikes", dislikes);
+      console.log("Preferences saved:", { likes, dislikes });
+      alert("Preferences saved!");
+    });
+  }
+});
   </main>
 
   <!-- Footer -->
@@ -64,9 +97,6 @@
   <script src="app.js"></script>
   <script src="calendar.js"></script>
   
-  <section id="themeToggle" class="section">
-  <h3>Theme Settings</h3>
-  <button id="toggleThemeButton">Toggle Dark/Light Mode</button>
 </section>
 </body>
 </html>
