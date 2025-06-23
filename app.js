@@ -27,6 +27,19 @@ document.addEventListener("DOMContentLoaded", function () {
       // Optionally, store the preference in localStorage for persistence
       const isLight = document.body.classList.contains("light-mode");
       localStorage.setItem("theme", isLight ? "light" : "dark");
+      // Onboarding Modal Logic
+const onboardingModal = document.getElementById("onboardingModal");
+const closeOnboarding = document.getElementById("closeOnboarding");
+
+if (onboardingModal && closeOnboarding && !localStorage.getItem("onboarded")) {
+  onboardingModal.style.display = "flex";
+  closeOnboarding.addEventListener("click", function () {
+    onboardingModal.style.display = "none";
+    localStorage.setItem("onboarded", true);
+  });
+} else if (onboardingModal) {
+  onboardingModal.style.display = "none";
+}
     });
 
     // On page load, check localStorage for theme preference
