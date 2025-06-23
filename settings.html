@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulsePlanner Ai - Settings</title>
+  <!-- Google Font for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header with navigation -->
+  <header>
+    <div class="header-container">
+      <h1>PulsePlanner Ai</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a class="active" href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section for Settings -->
+    <section class="settings-hero section">
+      <h2>Settings & Preferences</h2>
+      <p>Configure your preferences and connect your calendar to PulsePlanner Ai.</p>
+    </section>
+
+    <!-- User Preferences Section -->
+    <section id="preferences" class="section">
+      <h3>User Preferences</h3>
+      <form id="preferencesForm">
+        <label for="likes">What do you like?</label>
+        <textarea id="likes" placeholder="e.g., Nature, tech, music"></textarea>
+        <label for="dislikes">What do you dislike?</label>
+        <textarea id="dislikes" placeholder="e.g., Crowds, long commutes"></textarea>
+        <button type="submit">Save Preferences</button>
+      </form>
+    </section>
+
+    <!-- Google Calendar Integration Section -->
+    <section id="calendar-sync" class="section">
+      <h3>Google Calendar Integration</h3>
+      <p>Connect your Google Calendar to sync your PulsePlanner tasks and events seamlessly.</p>
+      <button id="calendarSyncButton">Sync with Google Calendar</button>
+      <div id="calendarSyncStatus"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 PulsePlanner Ai. All rights reserved.</p>
+  </footer>
+
+  <!-- Shared JavaScript files -->
+  <script src="app.js"></script>
+  <script src="calendar.js"></script>
+</body>
+</html>
