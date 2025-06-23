@@ -6,6 +6,18 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".header-container").addEventListener("click", function () {
     // This is just a placeholder for any global event handling.
     // You could add show/hide logic if you implement a mobile hamburger menu.
+document.addEventListener("DOMContentLoaded", function () {
+  // Existing global functions ...
+
+  // AI Welcome Message for first-time visitors
+  if (!localStorage.getItem("visited")) {
+    const aiWelcome = document.getElementById("aiWelcome");
+    if (aiWelcome) {
+      aiWelcome.innerHTML = "<p>Hey there! Ready to elevate your planning experience?</p>";
+    }
+    localStorage.setItem("visited", true);
+  }
+});
   });
 
   // Global: Example for saving preferences from any page using localStorage.
