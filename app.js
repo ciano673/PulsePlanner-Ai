@@ -102,10 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
           quickTaskResult.innerHTML = `<p>Please format your query as "Plan route from [Start] to [Destination]".</p>`;
         }
         quickTaskInput.value = "";
-      }
-    });
-  }
-
   // Simulated maps integration function (to be replaced with actual API integration later)
   function getTransitTime(start, end) {
     // For demonstration purposes, return a random time between 10-30 minutes.
