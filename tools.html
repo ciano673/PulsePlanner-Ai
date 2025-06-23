@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulsePlanner Ai - Tools</title>
+  <!-- Google Font for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header with navigation -->
+  <header>
+    <div class="header-container">
+      <h1>PulsePlanner Ai</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="tools.html">Tools</a></li>
+          <li><a href="progress.html">Progress Tracker</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content: Tools page -->
+  <main>
+    <!-- Quick Task Planner Section -->
+    <section id="quick-task-planner" class="section">
+      <h2>Quick Task Planner</h2>
+      <p>
+        Plan your day-to-day journeys instantly. Get fast transit info and route recommendations
+        at the tap of a button.
+      </p>
+      <div class="task-entry">
+        <input type="text" id="quickTaskInput" placeholder="E.g., 'Plan route from office to gym'" />
+        <button id="addQuickTaskButton">Plan Route</button>
+      </div>
+      <div id="quickTaskResult" class="result"></div>
+    </section>
+
+    <!-- Smart Scheduler Section -->
+    <section id="smart-scheduler" class="section">
+      <h2>Smart Scheduler</h2>
+      <p>
+        Automate your recurring tasks—tell us your work days, gym sessions, or any scheduled event,
+        and let our AI fill your calendar intelligently. For example, enter "Work Monday-Friday 9‑5"
+        and watch it auto‑populate your month.
+      </p>
+      <div class="scheduler-input">
+        <input type="text" id="schedulerTaskInput" placeholder="E.g., 'Work Monday-Friday 9-5'" />
+        <button id="addSchedulerTaskButton">Add Task</button>
+      </div>
+      <div id="schedulerOutput" class="scheduler-output">
+        <!-- The dynamic calendar/scheduler output will render here -->
+      </div>
+      <div id="priorityList" class="priority-list">
+        <h3>Priority Tasks</h3>
+        <ul></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 PulsePlanner Ai. All rights reserved.</p>
+  </footer>
+
+  <!-- Include shared JavaScript files -->
+  <!-- app.js will handle global interactions, while scheduler.js handles the Smart Scheduler logic -->
+  <script src="app.js"></script>
+  <script src="scheduler.js"></script>
+</body>
+</html>
