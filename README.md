@@ -1,5 +1,5 @@
-# PulsePlanner
-# 🧠 PulsePlanner
+# PulsePlanner Ai
+# 🧠 PulsePlanner Ai
 
 PlanMate AI is your intuitive, intelligent daily planner that turns chaotic thoughts into structured, doable days—with a dash of calm. Just tell it what you want to do, and it takes care of the rest.
 
